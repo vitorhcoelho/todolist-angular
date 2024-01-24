@@ -1,29 +1,30 @@
-<mat-spinner *ngIf="enableSpinner"></mat-spinner>
+<div>
+  <h1>TODO LIST</h1>
 
-<h1>TODO LIST</h1>
+  <mat-form-field color="accent">
+    <mat-label>Insira uma nova tarefa</mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="Limpar a mesa"
+      #insertedTask
+      (keyup.enter)="addTask(insertedTask.value); cleanInput(insertedTask)"
 
-<mat-form-field>
-  <mat-label>Insira uma nova tarefa</mat-label>
-  <input
-    matInput
-    type="text"
-    placeholder="Limpar a mesa"
-    #insertedTask
-    (keyup.enter)="addTask(insertedTask.value); cleanInput(insertedTask)"
-  />
-  <button
-    (click)="addTask(insertedTask.value); cleanInput(insertedTask)"
-    mat-mini-fab
-    color="primary"
-  >
-    <mat-icon class="mat-18">task_alt</mat-icon>
-  </button>
-</mat-form-field>
+    />
+    <button
+      (click)="addTask(insertedTask.value); cleanInput(insertedTask)"
+      mat-mini-fab
+      color="accent"
+    >
+      <mat-icon class="mat-18">task_alt</mat-icon>
+    </button>
+  </mat-form-field>
 
-<section *ngFor="let item of taskList">
-  <mat-checkbox [checked]="item.checked" color="primary"></mat-checkbox>
-  <mat-label>{{ item.task }}</mat-label>
-  <button mat-icon-button (click)="deleteTask(item)">
-    <mat-icon>delete</mat-icon>
-  </button>
-</section>
+  <section *ngFor="let item of taskList">
+    <mat-checkbox [checked]="item.checked" color="accent"></mat-checkbox>
+    <mat-label>{{ item.task }}</mat-label>
+    <button mat-icon-button (click)="deleteTask(item)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </section>
+</div>

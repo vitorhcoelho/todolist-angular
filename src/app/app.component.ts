@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public enableSpinner: boolean = true;
   public taskList: {
     task: string;
     checked: boolean;
@@ -16,9 +15,7 @@ export class AppComponent {
 
   ngOnInit() {}
 
-  ngAfterViewInit() {
-    this.enableSpinner = false;
-  }
+  ngAfterViewInit() {}
 
   addTask(task: string) {
     if (task !== '') this.taskList.push({ task: task, checked: false });
