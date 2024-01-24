@@ -24,7 +24,9 @@ export class AppComponent {
     if (task !== '') this.taskList.push({ task: task, checked: false });
   }
 
-  deleteTask() {}
+  deleteTask(taskDeleted: { task: string; checked: boolean }) {
+    this.taskList = this.taskList.filter((item) => item !== taskDeleted);
+  }
 
   cleanInput(field: any) {
     field.value = '';

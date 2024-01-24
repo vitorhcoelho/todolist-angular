@@ -23,7 +23,7 @@
 <section *ngFor="let item of taskList">
   <mat-checkbox [checked]="item.checked" color="primary"></mat-checkbox>
   <mat-label>{{ item.task }}</mat-label>
-  <button mat-icon-button>
+  <button mat-icon-button (click)="deleteTask(item)">
     <mat-icon>delete</mat-icon>
   </button>
 </section>
