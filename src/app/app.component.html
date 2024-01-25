@@ -9,20 +9,19 @@
       placeholder="Limpar a mesa"
       #insertedTask
       (keyup.enter)="addTask(insertedTask.value); cleanInput(insertedTask)"
-
     />
-    <button
-      (click)="addTask(insertedTask.value); cleanInput(insertedTask)"
-      mat-mini-fab
-      color="accent"
-    >
-      <mat-icon class="mat-18">task_alt</mat-icon>
-    </button>
   </mat-form-field>
+  <button
+    (click)="addTask(insertedTask.value); cleanInput(insertedTask)"
+    mat-mini-fab
+    color="accent"
+  >
+    <mat-icon class="mat-18">add</mat-icon>
+  </button>
 
   <section *ngFor="let item of taskList">
-    <mat-checkbox [checked]="item.checked" color="accent"></mat-checkbox>
-    <mat-label>{{ item.task }}</mat-label>
+    <mat-checkbox [(ngModel)]="item.checked" color="accent"></mat-checkbox>
+    <mat-label [ngStyle]="{'text-decoration': item.checked ? 'line-through' : 'none'}">{{ item.task }}</mat-label>
     <button mat-icon-button (click)="deleteTask(item)">
       <mat-icon>delete</mat-icon>
     </button>
